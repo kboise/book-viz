@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ratings Summary</title>
+</head>
+
+<style>
+
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        position: relative;
+        width: 960px;
+    }
+
+    .axis text {
+        font: 10px sans-serif;
+    }
+
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
+
+    .bar {
+        fill: #77B474;
+        fill-opacity: .9;
+    }
+
+    .x.axis path {
+        display: none;
+    }
+
+    label {
+        position: relative;
+        top: 10px;
+        left: 50%;
+        display: none;
+    }
+
+    .loading {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+    }
+
+    #ratings-graph {
+        width: 640px;
+        height: 333px;
+    }
+
+</style>
+<body>
+<div id="ratings-graph">
+    <label ><input type="checkbox"> Sort values</label>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+
+<script src="../script/d3.v3.min.js"></script>
+<script src="../script/user-ratings.js"></script>
+
+<div class="loading"><p>Processing 1 million book ratings...</p></div>
+
+
+
+
+</body>
