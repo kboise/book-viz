@@ -3,7 +3,7 @@
  */
 var margin = {top: 40, right: 20, bottom: 30, left: 40},
     width = 640 - margin.left - margin.right,
-    height = 333 - margin.top - margin.bottom;
+    height = 340 - margin.top - margin.bottom;
 
 var formatPercent = d3.format(".0%");
 
@@ -26,7 +26,7 @@ var tip = d3.tip()
     .attr('class', 'd3-tip')
     .offset([-10, 0])
     .html(function(d) {
-        return "<strong>Frequency:</strong> <span style='color:orange'>" + (d.frequency * 100).toFixed(2) + '%' + "</span>";
+        return "<strong>Percentage:</strong> <span style='color:orange'>" + (d.frequency * 100).toFixed(2) + '%' + "</span>";
     })
 
 var svg = d3.select("#ratings-graph").append("svg")
@@ -57,7 +57,13 @@ d3.csv("../data/BX-Book-Ratings.csv", function(data) {
 
     // Remove distorted keys
     for(var i = 0; i <= 10; i++) {
-        processedRatingsDictionary[i] = ratingsDictionary[i] / totalCount;
+
+        if (i == 0) {
+            processedRatingsDictionary["Unrated"] = ratingsDictionary[i] / totalCount;
+        } else {
+            processedRatingsDictionary[i] = ratingsDictionary[i] / totalCount;
+        }
+
     }
 
     for (var key in processedRatingsDictionary) {
@@ -76,17 +82,22 @@ d3.csv("../data/BX-Book-Ratings.csv", function(data) {
     svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
+        .call(xAxis)
+        .append("text")
+        .attr("dx", (width / 2) - 50)
+        .attr("dy", 28)
+        .text("Ratings (1: Least, 10: Highest)");
+
 
     svg.append("g")
         .attr("class", "y axis")
         .call(yAxis)
         .append("text")
-        .attr("transform", "rotate(-90)")
-        .attr("y", 6)
+        .attr("x", 10)
+        .attr("y", -20)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
-        .text("");
+        .text("Percentage");
 
     svg.selectAll(".bar")
         .data(data)
@@ -99,8 +110,7 @@ d3.csv("../data/BX-Book-Ratings.csv", function(data) {
         .on('mouseover', tip.show)
         .on('mouseout', tip.hide)
 
-    $(".loading").remove();
-    $("label").css("display", "block");
+    $(".processing_text").text("Ratings Summary");
 
 });
 

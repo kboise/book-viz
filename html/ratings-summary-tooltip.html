@@ -3,99 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Ratings Summary</title>
+    <link rel="stylesheet" type="text/css" href="../style/ratings-summary.css">
 </head>
-
-<style>
-
-    body {
-        font: 10px sans-serif;
-    }
-
-    .y {
-        margin-right: 10px;
-    }
-    .axis path,
-    .axis line {
-        fill: none;
-        stroke: #000;
-        shape-rendering: crispEdges;
-    }
-
-    label {
-        position: relative;
-        top: 10px;
-        left: 50%;
-        display: none;
-    }
-
-    .bar {
-        fill: #77B474;
-    }
-
-    .bar:hover {
-        fill: #008000 ;
-    }
-
-    .x.axis path {
-        display: none;
-    }
-
-    .d3-tip {
-        line-height: 1;
-        font-weight: bold;
-        padding: 12px;
-        background: rgba(0, 0, 0, 0.8);
-        color: #fff;
-        border-radius: 2px;
-    }
-
-    /* Creates a small triangle extender for the tooltip */
-    .d3-tip:after {
-        box-sizing: border-box;
-        display: inline;
-        font-size: 10px;
-        width: 100%;
-        line-height: 1;
-        color: rgba(0, 0, 0, 0.8);
-        content: "\25BC";
-        position: absolute;
-        text-align: center;
-    }
-
-    /* Style northward tooltips differently */
-    .d3-tip.n:after {
-        margin: -1px 0 0 0;
-        top: 100%;
-        left: 0;
-    }
-
-    .loading {
-        position: fixed;
-        left: 0px;
-        top: 0px;
-        width: 100%;
-        height: 100%;
-        z-index: 9999;
-    }
-
-    #ratings-graph {
-        width: 640px;
-        height: 333px;
-    }
-</style>
 <body>
-
-<div id="ratings-graph"></div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+<script src="../script/d3/d3.v3.min.js"></script>
+<script src="../script/d3/d3.tip.v0.6.3.js"></script>
 
-<script src="../script/d3.v3.min.js"></script>
-<script src="../script/d3.tip.v0.6.3.js"></script>
-<script src="../script/user-ratings-tooltip.js"></script>
+<div id ="container">
+    <div id="ratings-graph">
+        <div id="loading_ratings"><p class="processing_text">Processing...</p></div>
+    </div>
+    <div id="users_distribution">
 
-<div class="loading"><p>Processing 1 million book ratings...</p></div>
+    </div>
+</div>
 
+<script src="../script/js/user-ratings-tooltip.js"></script>
+<!--<script src="../script/js/location-summary.js"></script>-->
 
 
 </body>
