@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa63e352-a19e-487d-b528-6b728995285f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/location-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/script/js/location-summary.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/location-summary.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/ratings-summary.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/script/d3.js" afterPath="$PROJECT_DIR$/script/d3/d3.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/script/d3.min.js" afterPath="$PROJECT_DIR$/script/d3/d3.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/script/d3.tip.v0.6.3.js" afterPath="$PROJECT_DIR$/script/d3/d3.tip.v0.6.3.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/script/d3.v3.min.js" afterPath="$PROJECT_DIR$/script/d3/d3.v3.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/script/user-ratings-tooltip.js" afterPath="$PROJECT_DIR$/script/js/user-ratings-tooltip.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/script/user-ratings.js" afterPath="$PROJECT_DIR$/script/js/user-ratings.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/index.html" afterPath="$PROJECT_DIR$/html/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/ratings-summary-tooltip.html" afterPath="$PROJECT_DIR$/html/ratings-summary-tooltip.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/ratings-summary.html" afterPath="$PROJECT_DIR$/html/ratings-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/js/location-summary.js" afterPath="$PROJECT_DIR$/script/js/location-summary.js" />
     </list>
     <ignored path="book-rec.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -89,8 +76,8 @@
       <file leaf-file-name="location-summary.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/js/location-summary.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1620">
-              <caret line="110" column="105" selection-start-line="110" selection-start-column="105" selection-end-line="110" selection-end-column="105" />
+            <state relative-caret-position="237">
+              <caret line="165" column="46" selection-start-line="165" selection-start-column="46" selection-end-line="165" selection-end-column="46" />
               <folding>
                 <element signature="e#0#45#0" expanded="false" />
               </folding>
@@ -396,12 +383,12 @@
       <workItem from="1481244478850" duration="4535000" />
       <workItem from="1481398715626" duration="14905000" />
       <workItem from="1481483750202" duration="2969000" />
-      <workItem from="1481572036351" duration="9779000" />
+      <workItem from="1481572036351" duration="16940000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39824000" />
+    <option name="totallyTimeSpent" value="46985000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -632,8 +619,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script/js/location-summary.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1620">
-          <caret line="110" column="105" selection-start-line="110" selection-start-column="105" selection-end-line="110" selection-end-column="105" />
+        <state relative-caret-position="237">
+          <caret line="165" column="46" selection-start-line="165" selection-start-column="46" selection-end-line="165" selection-end-column="46" />
           <folding>
             <element signature="e#0#45#0" expanded="false" />
           </folding>
