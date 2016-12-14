@@ -165,25 +165,44 @@ d3.csv("../data/BX-Users.csv", function(data) {
                 div.style("display", "inline-block");
                 div.attr("id", "myDiv");
 
-                var ageGroupLabels = ['100+', '90to99', '80to89', '70to79', '60to69', '50to59', '40to49', '30to39', '20to29',
-                    '10to19', '0to9'];
+                var ageGroupLabels = ["0to9", "10to19", "20to29", "30to39", "40to49", "50to59", "60to69", "70to79", "80to89",
+                                    "90to99", "100+"];
 
                 var ageGroupValue = [];
 
-                for (var i = 0; i < ageGroupLabels.length; i++) {
+                for (var i = ageGroupLabels.length - 1; i >= 0 ; i--) {
                     ageGroupValue[i] = ageGroupDictionary[d.label.toLowerCase()][ageGroupLabels[i]];
                 }
 
-                // console.log(ageGroupValue);
+                var layout = {
+                    title: 'Readers Age Distribution',
+                    xaxis: {
+                        title: 'Age Group',
+                        titlefont: {
+                            family: 'Courier New, monospace',
+                            size: 18,
+                            color: '#7f7f7f'
+                        }
+                    },
+                    yaxis: {
+                        title: 'Number of readers',
+                        titlefont: {
+                            family: 'Courier New, monospace',
+                            size: 18,
+                            color: '#7f7f7f'
+                        }
+                    }
+                };
 
                 var data = [{
                     type: 'bar',
-                    x: ageGroupValue,
-                    y: ['100+', '90-99', '80-89', '70-79', '60-69', '50-59', '40-49', '30-39', '20-29', '10-19', '0-9'],
-                    orientation: 'h'
+                    x: ['1-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80-89', '90-99', '100+'],
+                    y: ageGroupValue,
+                    orientation: 'v'
                 }];
 
-                Plotly.newPlot('myDiv', data);
+                Plotly.newPlot('myDiv', data, layout);
+
             } else if(document.getElementById('radioText').checked) {
                 div.style("left", d3.event.pageX+10+"px");
                 div.style("top", d3.event.pageY-25+"px");
@@ -191,7 +210,7 @@ d3.csv("../data/BX-Users.csv", function(data) {
                 div.html((d.label)+"<br>"
                     +"Total: "+(d.value)+"<br><br>"
                     +"Age group: " + "Number" + "<br>"
-                    +"0-9"+": "+(ageGroupDictionary[d.label.toLowerCase()]['0to9'])+"<br>"
+                    +"1-9"+": "+(ageGroupDictionary[d.label.toLowerCase()]['0to9'])+"<br>"
                     +"10-19"+": "+(ageGroupDictionary[d.label.toLowerCase()]['10to19'])+"<br>"
                     +"20-29"+": "+(ageGroupDictionary[d.label.toLowerCase()]['20to29'])+"<br>"
                     +"30-39"+": "+(ageGroupDictionary[d.label.toLowerCase()]['30to39'])+"<br>"
