@@ -73,7 +73,7 @@ d3.csv("../data/BX-Users.csv", function(data) {
         }
     }
 
-    console.log(ageGroupDictionary);
+    // console.log(ageGroupDictionary);
 
 
     for (var key in locationsDictionary) {
@@ -88,20 +88,20 @@ d3.csv("../data/BX-Users.csv", function(data) {
 
     data = locationssArray;
 
-    var div = d3.select("body").append("div").attr("class", "toolTip");
+    var div = d3.select("#mainGraphContainer").append("div").attr("class", "toolTip");
 
     var axisMargin = 20,
         margin = 40,
         valueMargin = 4,
-        width = parseInt(d3.select('body').style('width'), 10),
-        height = parseInt(d3.select('body').style('height'), 10),
+        width = parseInt(d3.select('#mainGraphContainer').style('width'), 10),
+        height = parseInt(d3.select('#mainGraphContainer').style('height'), 10),
         barHeight = (height-axisMargin-margin*2)* 0.4/data.length,
         barPadding = (height-axisMargin-margin*2)*0.6/data.length,
         data, bar, svg, scale, xAxis, labelWidth = 0;
 
     max = d3.max(data, function(d) { return d.value; });
 
-    svg = d3.select('body')
+    svg = d3.select('#mainGraphContainer')
         .append("svg")
         .attr("width", width)
         .attr("height", height);
@@ -159,23 +159,50 @@ d3.csv("../data/BX-Users.csv", function(data) {
 
     bar
         .on("mousemove", function(d){
-            div.style("left", d3.event.pageX+10+"px");
-            div.style("top", d3.event.pageY-25+"px");
-            div.style("display", "inline-block");
-            div.html((d.label)+"<br>"
-                +"Total: "+(d.value)+"<br><br>"
-                +"0-9"+": "+(ageGroupDictionary[d.label.toLowerCase()]['0to9'])+"<br>"
-                +"10-19"+": "+(ageGroupDictionary[d.label.toLowerCase()]['10to19'])+"<br>"
-                +"20-29"+": "+(ageGroupDictionary[d.label.toLowerCase()]['20to29'])+"<br>"
-                +"30-39"+": "+(ageGroupDictionary[d.label.toLowerCase()]['30to39'])+"<br>"
-                +"40-49"+": "+(ageGroupDictionary[d.label.toLowerCase()]['40to49'])+"<br>"
-                +"50-59"+": "+(ageGroupDictionary[d.label.toLowerCase()]['50to59'])+"<br>"
-                +"60-69"+": "+(ageGroupDictionary[d.label.toLowerCase()]['60to69'])+"<br>"
-                +"70-79"+": "+(ageGroupDictionary[d.label.toLowerCase()]['70to79'])+"<br>"
-                +"80-89"+": "+(ageGroupDictionary[d.label.toLowerCase()]['80to89'])+"<br>"
-                +"90-99"+": "+(ageGroupDictionary[d.label.toLowerCase()]['90to99'])+"<br>"
-                +"100+"+": "+(ageGroupDictionary[d.label.toLowerCase()]['100+'])+"<br>");
+            if(document.getElementById('radioBarChart').checked) {
+                div.style("left", d3.event.pageX+10+"px");
+                div.style("top", d3.event.pageY-25+"px");
+                div.style("display", "inline-block");
+                div.attr("id", "myDiv");
 
+                var ageGroupLabels = ['100+', '90to99', '80to89', '70to79', '60to69', '50to59', '40to49', '30to39', '20to29',
+                    '10to19', '0to9'];
+
+                var ageGroupValue = [];
+
+                for (var i = 0; i < ageGroupLabels.length; i++) {
+                    ageGroupValue[i] = ageGroupDictionary[d.label.toLowerCase()][ageGroupLabels[i]];
+                }
+
+                // console.log(ageGroupValue);
+
+                var data = [{
+                    type: 'bar',
+                    x: ageGroupValue,
+                    y: ['100+', '90-99', '80-89', '70-79', '60-69', '50-59', '40-49', '30-39', '20-29', '10-19', '0-9'],
+                    orientation: 'h'
+                }];
+
+                Plotly.newPlot('myDiv', data);
+            } else if(document.getElementById('radioText').checked) {
+                div.style("left", d3.event.pageX+10+"px");
+                div.style("top", d3.event.pageY-25+"px");
+                div.style("display", "inline-block");
+                div.html((d.label)+"<br>"
+                    +"Total: "+(d.value)+"<br><br>"
+                    +"Age group: " + "Number" + "<br>"
+                    +"0-9"+": "+(ageGroupDictionary[d.label.toLowerCase()]['0to9'])+"<br>"
+                    +"10-19"+": "+(ageGroupDictionary[d.label.toLowerCase()]['10to19'])+"<br>"
+                    +"20-29"+": "+(ageGroupDictionary[d.label.toLowerCase()]['20to29'])+"<br>"
+                    +"30-39"+": "+(ageGroupDictionary[d.label.toLowerCase()]['30to39'])+"<br>"
+                    +"40-49"+": "+(ageGroupDictionary[d.label.toLowerCase()]['40to49'])+"<br>"
+                    +"50-59"+": "+(ageGroupDictionary[d.label.toLowerCase()]['50to59'])+"<br>"
+                    +"60-69"+": "+(ageGroupDictionary[d.label.toLowerCase()]['60to69'])+"<br>"
+                    +"70-79"+": "+(ageGroupDictionary[d.label.toLowerCase()]['70to79'])+"<br>"
+                    +"80-89"+": "+(ageGroupDictionary[d.label.toLowerCase()]['80to89'])+"<br>"
+                    +"90-99"+": "+(ageGroupDictionary[d.label.toLowerCase()]['90to99'])+"<br>"
+                    +"100+"+": "+(ageGroupDictionary[d.label.toLowerCase()]['100+'])+"<br>");
+            }
         });
     bar
         .on("mouseout", function(d){
@@ -185,6 +212,11 @@ d3.csv("../data/BX-Users.csv", function(data) {
     svg.insert("g",":first-child")
         .attr("class", "axisHorizontal")
         .attr("transform", "translate(" + (margin + labelWidth) + ","+ (height - axisMargin - margin)+")")
+        .call(xAxis);
+
+    svg.insert("g",":first-child")
+        .attr("class", "axisHorizontal")
+        .attr("transform", "translate(" + (margin + labelWidth) + ", 0)")
         .call(xAxis);
 });
 

@@ -6,6 +6,16 @@
     <link rel="stylesheet" type="text/css" href="../style/location-summary.css">
 </head>
 <body>
+<div id="popUpTypeSelectorContainer">
+    <form action="">
+        Tooltip Type:
+        <input id="radioBarChart" type="radio" name="tooltipType" value="graph" checked onclick="location.reload();"> Bar chart
+        <input id="radioText" type="radio" name="tooltipType" value="text"> Text<br>
+    </form>
+</div>
+<div id="mainGraphContainer"></div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="../script/js/location-summary.js"></script>
 
