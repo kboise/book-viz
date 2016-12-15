@@ -20,11 +20,11 @@ label {
 }
 
 .bar {
-    fill: #77B474;
+    fill: #2E8B57;
 }
 
 .bar:hover {
-    fill: #008000 ;
+    fill: #006400 ;
 }
 
 .x.axis path {
@@ -84,11 +84,24 @@ label {
     border-width: 1px;
 }
 
-#users_distribution {
+#books_list {
     margin-left: 10px;
     width: 590px;
     height: 380px;
     border-style: solid;
     border-width: 1px;
     float: left;
+    overflow: scroll;
 }
+
+#single_book_info {
+    margin-right: 20px;
+    margin-top: 10px;
+    width: 590px;
+    height: 380px;
+    float: right;
+    border-style: solid;
+    border-width: 1px;
+}
+
+tr { cursor: pointer; }
